@@ -1,20 +1,39 @@
-public class InsertionSort{
-  public static void insertionSort(int[] arr){
-    for(int i=1;i<arr.length;i++){
-    int key=arr[i];
-    int j=i-1;
-    while(j>=0 && arr[j]>key){
-      arr[j+1]=arr[j];
-      j--;
+public class InsertionSort {
+    // Method to perform insertion sort
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];         // The current element to be inserted
+            int j = i - 1;
+
+            // Move elements of arr[0..i-1], that are greater than key,
+            // to one position ahead of their current position
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];  // Shift element to the right
+                j = j - 1;
+            }
+            arr[j + 1] = key;         // Insert the key at the correct position
+        }
     }
-    arr[j+1]=key;
+
+    // Method to print the array
+    public static void printArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
     }
-  }
-  public static void main(String[] args){
-    int[] arr={600,604,500,400,1200,750,654,840,8765,6753,543,890,879};
-    insertionSort(arr);
-    for(int num:arr){
-      System.out.print(num+" ");
+
+    // Main method to test the insertion sort
+    public static void main(String[] args) {
+        int[] arr = {29, 10, 14, 37, 13};
+        System.out.println("Original array:");
+        printArray(arr);
+
+        insertionSort(arr);
+
+        System.out.println("Sorted array:");
+        printArray(arr);
     }
-  }
 }
